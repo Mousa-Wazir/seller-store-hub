@@ -1,5 +1,4 @@
-
-import { TrendingUp, Package, ShoppingCart, DollarSign, AlertTriangle, Star, Users, Eye } from "lucide-react";
+import { TrendingUp, Package, ShoppingCart, DollarSign, AlertTriangle, Star, Users, Eye, BarChart3 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
