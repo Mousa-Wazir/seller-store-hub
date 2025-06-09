@@ -1,6 +1,5 @@
-
 import { useState } from "react";
-import { CalendarDays, Package, Clock, DollarSign, FileText, Bell, Plus, Search, Filter } from "lucide-react";
+import { CalendarDays, Package, Clock, DollarSign, FileText, Bell, Plus, Search, Filter, BarChart3 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
