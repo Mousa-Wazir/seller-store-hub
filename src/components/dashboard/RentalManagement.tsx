@@ -21,65 +21,65 @@ export const RentalManagement = () => {
   ];
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-6">
       {/* Header */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center space-y-4 sm:space-y-0">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Rental Management</h1>
-          <p className="text-gray-600">Manage your rental products and bookings</p>
+          <h1 className="text-xl sm:text-2xl font-bold text-gray-900">Rental Management</h1>
+          <p className="text-gray-600 text-sm sm:text-base">Manage your rental products and bookings</p>
         </div>
-        <Button className="bg-gray-900 hover:bg-gray-800">
+        <Button className="bg-gray-900 hover:bg-gray-800 w-full sm:w-auto">
           <Plus className="h-4 w-4 mr-2" />
           Add Rental Product
         </Button>
       </div>
 
       {/* Stats Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
         <Card>
-          <CardContent className="p-6">
+          <CardContent className="p-4 sm:p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-600">Total Rental Products</p>
-                <p className="text-2xl font-bold text-gray-900">12</p>
+                <p className="text-xs sm:text-sm font-medium text-gray-600">Total Rental Products</p>
+                <p className="text-lg sm:text-2xl font-bold text-gray-900">12</p>
               </div>
-              <Package className="h-8 w-8 text-blue-600" />
+              <Package className="h-6 w-6 sm:h-8 sm:w-8 text-blue-600" />
             </div>
           </CardContent>
         </Card>
 
         <Card>
-          <CardContent className="p-6">
+          <CardContent className="p-4 sm:p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-600">Active Rentals</p>
-                <p className="text-2xl font-bold text-gray-900">8</p>
+                <p className="text-xs sm:text-sm font-medium text-gray-600">Active Rentals</p>
+                <p className="text-lg sm:text-2xl font-bold text-gray-900">8</p>
               </div>
-              <CalendarDays className="h-8 w-8 text-green-600" />
+              <CalendarDays className="h-6 w-6 sm:h-8 sm:w-8 text-green-600" />
             </div>
           </CardContent>
         </Card>
 
         <Card>
-          <CardContent className="p-6">
+          <CardContent className="p-4 sm:p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-600">Pending Returns</p>
-                <p className="text-2xl font-bold text-gray-900">3</p>
+                <p className="text-xs sm:text-sm font-medium text-gray-600">Pending Returns</p>
+                <p className="text-lg sm:text-2xl font-bold text-gray-900">3</p>
               </div>
-              <Clock className="h-8 w-8 text-orange-600" />
+              <Clock className="h-6 w-6 sm:h-8 sm:w-8 text-orange-600" />
             </div>
           </CardContent>
         </Card>
 
         <Card>
-          <CardContent className="p-6">
+          <CardContent className="p-4 sm:p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-600">Monthly Revenue</p>
-                <p className="text-2xl font-bold text-gray-900">$2,450</p>
+                <p className="text-xs sm:text-sm font-medium text-gray-600">Monthly Revenue</p>
+                <p className="text-lg sm:text-2xl font-bold text-gray-900">$2,450</p>
               </div>
-              <DollarSign className="h-8 w-8 text-purple-600" />
+              <DollarSign className="h-6 w-6 sm:h-8 sm:w-8 text-purple-600" />
             </div>
           </CardContent>
         </Card>
@@ -87,31 +87,33 @@ export const RentalManagement = () => {
 
       {/* Rental Tabs */}
       <Tabs value={activeRentalTab} onValueChange={setActiveRentalTab}>
-        <TabsList className="grid w-full grid-cols-7">
-          <TabsTrigger value="products">Products</TabsTrigger>
-          <TabsTrigger value="bookings">Bookings</TabsTrigger>
-          <TabsTrigger value="returns">Returns</TabsTrigger>
-          <TabsTrigger value="terms">Terms</TabsTrigger>
-          <TabsTrigger value="reports">Reports</TabsTrigger>
-          <TabsTrigger value="invoices">Invoices</TabsTrigger>
-          <TabsTrigger value="notifications">Alerts</TabsTrigger>
-        </TabsList>
+        <div className="w-full overflow-x-auto">
+          <TabsList className="grid grid-cols-7 w-full min-w-[700px] lg:min-w-0">
+            <TabsTrigger value="products" className="text-xs sm:text-sm">Products</TabsTrigger>
+            <TabsTrigger value="bookings" className="text-xs sm:text-sm">Bookings</TabsTrigger>
+            <TabsTrigger value="returns" className="text-xs sm:text-sm">Returns</TabsTrigger>
+            <TabsTrigger value="terms" className="text-xs sm:text-sm">Terms</TabsTrigger>
+            <TabsTrigger value="reports" className="text-xs sm:text-sm">Reports</TabsTrigger>
+            <TabsTrigger value="invoices" className="text-xs sm:text-sm">Invoices</TabsTrigger>
+            <TabsTrigger value="notifications" className="text-xs sm:text-sm">Alerts</TabsTrigger>
+          </TabsList>
+        </div>
 
         <TabsContent value="products" className="space-y-4">
           <Card>
             <CardHeader>
-              <div className="flex justify-between items-center">
-                <CardTitle>My Rentable Products</CardTitle>
-                <div className="flex space-x-2">
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center space-y-3 sm:space-y-0">
+                <CardTitle className="text-lg sm:text-xl">My Rentable Products</CardTitle>
+                <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2 w-full sm:w-auto">
                   <div className="relative">
                     <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
                     <input
                       type="text"
                       placeholder="Search products..."
-                      className="pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-gray-900"
+                      className="pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-gray-900 w-full sm:w-auto"
                     />
                   </div>
-                  <Button variant="outline">
+                  <Button variant="outline" className="w-full sm:w-auto">
                     <Filter className="h-4 w-4 mr-2" />
                     Filter
                   </Button>
@@ -119,7 +121,8 @@ export const RentalManagement = () => {
               </div>
             </CardHeader>
             <CardContent>
-              <div className="overflow-x-auto">
+              {/* Desktop Table */}
+              <div className="hidden md:block overflow-x-auto">
                 <table className="w-full">
                   <thead>
                     <tr className="border-b border-gray-200">
@@ -151,6 +154,28 @@ export const RentalManagement = () => {
                   </tbody>
                 </table>
               </div>
+
+              {/* Mobile Cards */}
+              <div className="md:hidden space-y-4">
+                {rentalProducts.map((product) => (
+                  <Card key={product.id} className="p-4">
+                    <div className="space-y-2">
+                      <div className="flex justify-between items-start">
+                        <h3 className="font-medium text-gray-900">{product.name}</h3>
+                        <Badge variant={product.available ? "default" : "secondary"}>
+                          {product.available ? "Available" : "Rented"}
+                        </Badge>
+                      </div>
+                      <p className="text-sm text-gray-600">{product.category}</p>
+                      <div className="flex justify-between">
+                        <span className="text-sm">Daily: ${product.dailyRate}</span>
+                        <span className="text-sm">Weekly: ${product.weeklyRate}</span>
+                      </div>
+                      <Button size="sm" variant="outline" className="w-full">Edit</Button>
+                    </div>
+                  </Card>
+                ))}
+              </div>
             </CardContent>
           </Card>
         </TabsContent>
@@ -161,7 +186,8 @@ export const RentalManagement = () => {
               <CardTitle>Rental Bookings</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="overflow-x-auto">
+              {/* Desktop Table */}
+              <div className="hidden lg:block overflow-x-auto">
                 <table className="w-full">
                   <thead>
                     <tr className="border-b border-gray-200">
@@ -180,7 +206,7 @@ export const RentalManagement = () => {
                         <td className="py-4 px-4 font-medium text-gray-900">{booking.id}</td>
                         <td className="py-4 px-4 text-gray-600">{booking.product}</td>
                         <td className="py-4 px-4 text-gray-600">{booking.customer}</td>
-                        <td className="py-4 px-4 text-gray-600">{booking.startDate} - {booking.endDate}</td>
+                        <td className="py-4 px-4 text-gray-600 text-xs">{booking.startDate} - {booking.endDate}</td>
                         <td className="py-4 px-4 font-medium text-gray-900">${booking.deposit}</td>
                         <td className="py-4 px-4">
                           <Badge variant={
@@ -191,15 +217,15 @@ export const RentalManagement = () => {
                           </Badge>
                         </td>
                         <td className="py-4 px-4">
-                          <div className="flex space-x-2">
+                          <div className="flex space-x-1">
                             {booking.status === "pending" && (
                               <>
-                                <Button size="sm" variant="outline">Approve</Button>
-                                <Button size="sm" variant="outline">Reject</Button>
+                                <Button size="sm" variant="outline" className="text-xs">Approve</Button>
+                                <Button size="sm" variant="outline" className="text-xs">Reject</Button>
                               </>
                             )}
                             {booking.status === "active" && (
-                              <Button size="sm" variant="outline">Mark Returned</Button>
+                              <Button size="sm" variant="outline" className="text-xs">Mark Returned</Button>
                             )}
                           </div>
                         </td>
@@ -207,6 +233,44 @@ export const RentalManagement = () => {
                     ))}
                   </tbody>
                 </table>
+              </div>
+
+              {/* Mobile Cards */}
+              <div className="lg:hidden space-y-4">
+                {rentalBookings.map((booking) => (
+                  <Card key={booking.id} className="p-4">
+                    <div className="space-y-3">
+                      <div className="flex justify-between items-start">
+                        <div>
+                          <h3 className="font-medium text-gray-900">{booking.id}</h3>
+                          <p className="text-sm text-gray-600">{booking.product}</p>
+                        </div>
+                        <Badge variant={
+                          booking.status === "active" ? "default" :
+                          booking.status === "completed" ? "secondary" : "outline"
+                        }>
+                          {booking.status}
+                        </Badge>
+                      </div>
+                      <div className="space-y-1 text-sm">
+                        <p>Customer: {booking.customer}</p>
+                        <p>Duration: {booking.startDate} - {booking.endDate}</p>
+                        <p>Deposit: ${booking.deposit}</p>
+                      </div>
+                      <div className="flex flex-wrap gap-2">
+                        {booking.status === "pending" && (
+                          <>
+                            <Button size="sm" variant="outline" className="flex-1">Approve</Button>
+                            <Button size="sm" variant="outline" className="flex-1">Reject</Button>
+                          </>
+                        )}
+                        {booking.status === "active" && (
+                          <Button size="sm" variant="outline" className="w-full">Mark Returned</Button>
+                        )}
+                      </div>
+                    </div>
+                  </Card>
+                ))}
               </div>
             </CardContent>
           </Card>
@@ -232,7 +296,7 @@ export const RentalManagement = () => {
               <CardTitle>Rental Terms & Policy</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Late Fee (per day)</label>
                   <input type="number" className="w-full p-2 border border-gray-300 rounded-lg" defaultValue="10" />
@@ -250,7 +314,7 @@ export const RentalManagement = () => {
                   <input type="number" className="w-full p-2 border border-gray-300 rounded-lg" defaultValue="30" />
                 </div>
               </div>
-              <Button className="bg-gray-900 hover:bg-gray-800">Save Changes</Button>
+              <Button className="bg-gray-900 hover:bg-gray-800 w-full sm:w-auto">Save Changes</Button>
             </CardContent>
           </Card>
         </TabsContent>
@@ -292,15 +356,15 @@ export const RentalManagement = () => {
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
-                <div className="flex items-center space-x-4 p-4 bg-blue-50 rounded-lg">
-                  <Bell className="h-5 w-5 text-blue-600" />
+                <div className="flex items-start space-x-4 p-4 bg-blue-50 rounded-lg">
+                  <Bell className="h-5 w-5 text-blue-600 mt-0.5" />
                   <div>
                     <p className="font-medium text-gray-900">New rental booking</p>
                     <p className="text-sm text-gray-600">Professional Camera booked by Ahmad Ali</p>
                   </div>
                 </div>
-                <div className="flex items-center space-x-4 p-4 bg-orange-50 rounded-lg">
-                  <Clock className="h-5 w-5 text-orange-600" />
+                <div className="flex items-start space-x-4 p-4 bg-orange-50 rounded-lg">
+                  <Clock className="h-5 w-5 text-orange-600 mt-0.5" />
                   <div>
                     <p className="font-medium text-gray-900">Return due tomorrow</p>
                     <p className="text-sm text-gray-600">Wedding Decoration Set needs to be returned</p>

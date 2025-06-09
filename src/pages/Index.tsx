@@ -19,6 +19,7 @@ import { SettingsSection } from "@/components/dashboard/SettingsSection";
 const Index = () => {
   const [activeTab, setActiveTab] = useState("dashboard");
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+  const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
 
   const getPageTitle = () => {
     const titles = {
@@ -78,18 +79,30 @@ const Index = () => {
         pageTitle={getPageTitle()}
         sidebarCollapsed={sidebarCollapsed}
         setSidebarCollapsed={setSidebarCollapsed}
+        mobileSidebarOpen={mobileSidebarOpen}
+        setMobileSidebarOpen={setMobileSidebarOpen}
       />
       
-      <div className="flex">
+      <div className="flex relative">
         <Sidebar 
           activeTab={activeTab}
           setActiveTab={setActiveTab}
           collapsed={sidebarCollapsed}
+          mobileSidebarOpen={mobileSidebarOpen}
+          setMobileSidebarOpen={setMobileSidebarOpen}
         />
         
-        <main className={`flex-1 pt-16 p-6 transition-all duration-300 ${
-          sidebarCollapsed ? 'ml-16' : 'ml-64'
-        }`}>
+        {/* Mobile overlay */}
+        {mobileSidebarOpen && (
+          <div 
+            className="fixed inset-0 bg-black bg-opacity-50 z-20 lg:hidden"
+            onClick={() => setMobileSidebarOpen(false)}
+          />
+        )}
+        
+        <main className={`flex-1 pt-16 p-3 sm:p-4 lg:p-6 transition-all duration-300 ${
+          sidebarCollapsed ? 'lg:ml-16' : 'lg:ml-64'
+        } ml-0`}>
           {renderContent()}
         </main>
       </div>

@@ -10,9 +10,17 @@ interface SidebarProps {
   activeTab: string;
   setActiveTab: (tab: string) => void;
   collapsed: boolean;
+  mobileSidebarOpen: boolean;
+  setMobileSidebarOpen: (open: boolean) => void;
 }
 
-export const Sidebar = ({ activeTab, setActiveTab, collapsed }: SidebarProps) => {
+export const Sidebar = ({ 
+  activeTab, 
+  setActiveTab, 
+  collapsed, 
+  mobileSidebarOpen, 
+  setMobileSidebarOpen 
+}: SidebarProps) => {
   const menuItems = [
     { id: "dashboard", label: "Dashboard", icon: Home },
     { id: "products", label: "My Products", icon: Package },
@@ -29,33 +37,70 @@ export const Sidebar = ({ activeTab, setActiveTab, collapsed }: SidebarProps) =>
     { id: "settings", label: "Settings", icon: Settings },
   ];
 
+  const handleItemClick = (itemId: string) => {
+    setActiveTab(itemId);
+    if (mobileSidebarOpen) {
+      setMobileSidebarOpen(false);
+    }
+  };
+
   return (
-    <aside className={cn(
-      "fixed top-16 left-0 h-full bg-white border-r border-gray-200 z-30 transition-all duration-300",
-      collapsed ? "w-16" : "w-64"
-    )}>
-      <nav className="p-2 space-y-1">
-        {menuItems.map((item) => {
-          const Icon = item.icon;
-          return (
-            <button
-              key={item.id}
-              onClick={() => setActiveTab(item.id)}
-              className={cn(
-                "w-full flex items-center space-x-3 px-3 py-3 text-left rounded-lg transition-colors text-sm font-medium",
-                activeTab === item.id
-                  ? "bg-gray-900 text-white"
-                  : "text-gray-600 hover:bg-gray-100 hover:text-gray-900",
-                collapsed && "justify-center"
-              )}
-              title={collapsed ? item.label : undefined}
-            >
-              <Icon className="h-5 w-5 flex-shrink-0" />
-              {!collapsed && <span>{item.label}</span>}
-            </button>
-          );
-        })}
-      </nav>
-    </aside>
+    <>
+      {/* Desktop Sidebar */}
+      <aside className={cn(
+        "hidden lg:block fixed top-16 left-0 h-full bg-white border-r border-gray-200 z-30 transition-all duration-300",
+        collapsed ? "w-16" : "w-64"
+      )}>
+        <nav className="p-2 space-y-1 h-full overflow-y-auto">
+          {menuItems.map((item) => {
+            const Icon = item.icon;
+            return (
+              <button
+                key={item.id}
+                onClick={() => handleItemClick(item.id)}
+                className={cn(
+                  "w-full flex items-center space-x-3 px-3 py-3 text-left rounded-lg transition-colors text-sm font-medium",
+                  activeTab === item.id
+                    ? "bg-gray-900 text-white"
+                    : "text-gray-600 hover:bg-gray-100 hover:text-gray-900",
+                  collapsed && "justify-center"
+                )}
+                title={collapsed ? item.label : undefined}
+              >
+                <Icon className="h-5 w-5 flex-shrink-0" />
+                {!collapsed && <span className="truncate">{item.label}</span>}
+              </button>
+            );
+          })}
+        </nav>
+      </aside>
+
+      {/* Mobile Sidebar */}
+      <aside className={cn(
+        "lg:hidden fixed top-16 left-0 h-full bg-white border-r border-gray-200 z-30 transition-transform duration-300 w-64",
+        mobileSidebarOpen ? "translate-x-0" : "-translate-x-full"
+      )}>
+        <nav className="p-2 space-y-1 h-full overflow-y-auto">
+          {menuItems.map((item) => {
+            const Icon = item.icon;
+            return (
+              <button
+                key={item.id}
+                onClick={() => handleItemClick(item.id)}
+                className={cn(
+                  "w-full flex items-center space-x-3 px-3 py-3 text-left rounded-lg transition-colors text-sm font-medium",
+                  activeTab === item.id
+                    ? "bg-gray-900 text-white"
+                    : "text-gray-600 hover:bg-gray-100 hover:text-gray-900"
+                )}
+              >
+                <Icon className="h-5 w-5 flex-shrink-0" />
+                <span className="truncate">{item.label}</span>
+              </button>
+            );
+          })}
+        </nav>
+      </aside>
+    </>
   );
 };
