@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Header } from "@/components/dashboard/Header";
 import { Sidebar } from "@/components/dashboard/Sidebar";
@@ -15,12 +14,10 @@ import { ReviewsSection } from "@/components/dashboard/ReviewsSection";
 import { StockAlertsSection } from "@/components/dashboard/StockAlertsSection";
 import { SupportSection } from "@/components/dashboard/SupportSection";
 import { SettingsSection } from "@/components/dashboard/SettingsSection";
-
 const Index = () => {
   const [activeTab, setActiveTab] = useState("dashboard");
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
-
   const getPageTitle = () => {
     const titles = {
       dashboard: "Dashboard Overview",
@@ -39,7 +36,6 @@ const Index = () => {
     };
     return titles[activeTab] || "Dashboard";
   };
-
   const renderContent = () => {
     switch (activeTab) {
       case "dashboard":
@@ -72,42 +68,19 @@ const Index = () => {
         return <DashboardOverview />;
     }
   };
-
-  return (
-    <div className="min-h-screen bg-gray-50">
-      <Header 
-        pageTitle={getPageTitle()}
-        sidebarCollapsed={sidebarCollapsed}
-        setSidebarCollapsed={setSidebarCollapsed}
-        mobileSidebarOpen={mobileSidebarOpen}
-        setMobileSidebarOpen={setMobileSidebarOpen}
-      />
+  return <div className="min-h-screen bg-gray-50">
+      <Header pageTitle={getPageTitle()} sidebarCollapsed={sidebarCollapsed} setSidebarCollapsed={setSidebarCollapsed} mobileSidebarOpen={mobileSidebarOpen} setMobileSidebarOpen={setMobileSidebarOpen} />
       
-      <div className="flex relative">
-        <Sidebar 
-          activeTab={activeTab}
-          setActiveTab={setActiveTab}
-          collapsed={sidebarCollapsed}
-          mobileSidebarOpen={mobileSidebarOpen}
-          setMobileSidebarOpen={setMobileSidebarOpen}
-        />
+      <div className="flex flex-col ">
+        <Sidebar activeTab={activeTab} setActiveTab={setActiveTab} collapsed={sidebarCollapsed} mobileSidebarOpen={mobileSidebarOpen} setMobileSidebarOpen={setMobileSidebarOpen} />
         
         {/* Mobile overlay */}
-        {mobileSidebarOpen && (
-          <div 
-            className="fixed inset-0 bg-black bg-opacity-50 z-20 lg:hidden"
-            onClick={() => setMobileSidebarOpen(false)}
-          />
-        )}
+        {mobileSidebarOpen && <div className="fixed inset-0 bg-black bg-opacity-50 z-20 lg:hidden" onClick={() => setMobileSidebarOpen(false)} />}
         
-        <main className={`flex-1 pt-16 p-3 sm:p-4 lg:p-6 transition-all duration-300 ${
-          sidebarCollapsed ? 'lg:ml-16' : 'lg:ml-64'
-        } ml-0`}>
+        <main className={`flex-1 pt-16 p-3 sm:p-4 lg:p-6 transition-all duration-300 ${sidebarCollapsed ? 'lg:ml-16' : 'lg:ml-64'} ml-0`}>
           {renderContent()}
         </main>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default Index;
