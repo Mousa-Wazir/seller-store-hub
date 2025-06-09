@@ -1,29 +1,16 @@
 
-import { useState } from "react";
-import { Bell, Menu, Search, User } from "lucide-react";
+import { Bell, Menu, User, LogOut, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Badge } from "@/components/ui/badge";
 
 interface HeaderProps {
-  activeTab: string;
-  setActiveTab: (tab: string) => void;
-  sidebarOpen: boolean;
-  setSidebarOpen: (open: boolean) => void;
+  pageTitle: string;
+  sidebarCollapsed: boolean;
+  setSidebarCollapsed: (collapsed: boolean) => void;
 }
 
-export const Header = ({ activeTab, setActiveTab, sidebarOpen, setSidebarOpen }: HeaderProps) => {
-  const [notifications] = useState(3);
-
-  const tabs = [
-    { id: "dashboard", label: "Dashboard" },
-    { id: "products", label: "My Products" },
-    { id: "orders", label: "Orders" },
-    { id: "customers", label: "Customers" },
-    { id: "earnings", label: "Earnings" },
-    { id: "messages", label: "Messages" },
-    { id: "settings", label: "Settings" },
-  ];
-
+export const Header = ({ pageTitle, sidebarCollapsed, setSidebarCollapsed }: HeaderProps) => {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-200 shadow-sm">
       <div className="flex items-center justify-between px-4 h-16">
@@ -32,8 +19,7 @@ export const Header = ({ activeTab, setActiveTab, sidebarOpen, setSidebarOpen }:
           <Button
             variant="ghost"
             size="sm"
-            onClick={() => setSidebarOpen(!sidebarOpen)}
-            className="lg:hidden"
+            onClick={() => setSidebarCollapsed(!sidebarCollapsed)}
           >
             <Menu className="h-5 w-5" />
           </Button>
@@ -41,22 +27,10 @@ export const Header = ({ activeTab, setActiveTab, sidebarOpen, setSidebarOpen }:
           <div className="font-bold text-xl text-gray-900">SellerHub</div>
         </div>
 
-        {/* Center - Navigation Tabs (Hidden on mobile) */}
-        <nav className="hidden md:flex space-x-1">
-          {tabs.map((tab) => (
-            <button
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
-              className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
-                activeTab === tab.id
-                  ? "bg-gray-900 text-white"
-                  : "text-gray-600 hover:text-gray-900 hover:bg-gray-100"
-              }`}
-            >
-              {tab.label}
-            </button>
-          ))}
-        </nav>
+        {/* Center - Page Title */}
+        <div className="hidden md:block">
+          <h1 className="text-lg font-semibold text-gray-800">{pageTitle}</h1>
+        </div>
 
         {/* Right Section */}
         <div className="flex items-center space-x-4">
@@ -72,11 +46,9 @@ export const Header = ({ activeTab, setActiveTab, sidebarOpen, setSidebarOpen }:
             
             <div className="relative">
               <Bell className="h-5 w-5 text-gray-600 cursor-pointer hover:text-gray-900" />
-              {notifications > 0 && (
-                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
-                  {notifications}
-                </span>
-              )}
+              <Badge className="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center p-0">
+                3
+              </Badge>
             </div>
           </div>
 
@@ -91,6 +63,9 @@ export const Header = ({ activeTab, setActiveTab, sidebarOpen, setSidebarOpen }:
               <div className="text-sm font-medium text-gray-900">John Doe</div>
               <div className="text-xs text-gray-500">Premium Seller</div>
             </div>
+            <Button variant="ghost" size="sm" className="text-gray-600 hover:text-red-600">
+              <LogOut className="h-4 w-4" />
+            </Button>
           </div>
         </div>
       </div>
