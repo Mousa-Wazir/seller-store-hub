@@ -49,10 +49,13 @@ export const Header = ({
           </Button>
           
           <div className="flex items-center space-x-1 sm:space-x-2">
-            <div className="flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 bg-gray-900 rounded-lg">
+            <div className="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl shadow-lg">
               <MapPin className="h-4 w-4 sm:h-5 sm:w-5 text-white" />
             </div>
-            <div className="font-bold text-lg sm:text-xl text-gray-900">LocalEna</div>
+            <div className="flex flex-col">
+              <div className="font-bold text-lg sm:text-xl text-gray-900">Localena</div>
+              <div className="hidden sm:block text-xs text-gray-500 -mt-1">Local Products, Global Reach</div>
+            </div>
           </div>
         </div>
 
@@ -72,7 +75,7 @@ export const Header = ({
               <input
                 type="text"
                 placeholder="Search..."
-                className="pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent w-40 lg:w-auto"
+                className="pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent w-40 lg:w-auto"
               />
             </div>
             
