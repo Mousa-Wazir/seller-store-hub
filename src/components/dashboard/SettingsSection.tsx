@@ -18,56 +18,58 @@ export const SettingsSection = () => {
   });
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-6 p-3 sm:p-4 lg:p-6">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center space-y-4 sm:space-y-0">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center space-y-3 sm:space-y-0">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Settings</h1>
-          <p className="text-gray-600">Manage your account and store preferences</p>
+          <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900">Settings</h1>
+          <p className="text-gray-600 text-sm sm:text-base">Manage your account and store preferences</p>
         </div>
       </div>
 
       {/* Settings Tabs */}
-      <Tabs defaultValue="profile" className="space-y-6">
-        <TabsList className="grid w-full grid-cols-6">
-          <TabsTrigger value="profile">Profile</TabsTrigger>
-          <TabsTrigger value="store">Store Info</TabsTrigger>
-          <TabsTrigger value="notifications">Notifications</TabsTrigger>
-          <TabsTrigger value="payments">Payments</TabsTrigger>
-          <TabsTrigger value="preferences">Preferences</TabsTrigger>
-          <TabsTrigger value="security">Security</TabsTrigger>
-        </TabsList>
+      <Tabs defaultValue="profile" className="space-y-4 sm:space-y-6">
+        <div className="w-full overflow-x-auto">
+          <TabsList className="grid w-full grid-cols-6 min-w-[600px] lg:min-w-0">
+            <TabsTrigger value="profile" className="text-xs sm:text-sm px-1 sm:px-2">Profile</TabsTrigger>
+            <TabsTrigger value="store" className="text-xs sm:text-sm px-1 sm:px-2">Store Info</TabsTrigger>
+            <TabsTrigger value="notifications" className="text-xs sm:text-sm px-1 sm:px-2">Notifications</TabsTrigger>
+            <TabsTrigger value="payments" className="text-xs sm:text-sm px-1 sm:px-2">Payments</TabsTrigger>
+            <TabsTrigger value="preferences" className="text-xs sm:text-sm px-1 sm:px-2">Preferences</TabsTrigger>
+            <TabsTrigger value="security" className="text-xs sm:text-sm px-1 sm:px-2">Security</TabsTrigger>
+          </TabsList>
+        </div>
 
-        <TabsContent value="profile" className="space-y-6">
+        <TabsContent value="profile" className="space-y-4 sm:space-y-6">
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center">
+              <CardTitle className="flex items-center text-lg sm:text-xl">
                 <User className="h-5 w-5 mr-2" />
                 Profile Information
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="flex items-center space-x-6 mb-6">
-                <Avatar className="h-20 w-20">
+              <div className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-6 mb-6">
+                <Avatar className="h-16 w-16 sm:h-20 sm:w-20">
                   <AvatarImage src="/placeholder-avatar.jpg" alt="Profile" />
                   <AvatarFallback>
-                    <User className="h-8 w-8" />
+                    <User className="h-6 w-6 sm:h-8 sm:w-8" />
                   </AvatarFallback>
                 </Avatar>
-                <div>
-                  <Button variant="outline">Change Photo</Button>
-                  <p className="text-sm text-gray-500 mt-1">JPG, PNG or GIF. Max size 2MB</p>
+                <div className="text-center sm:text-left">
+                  <Button variant="outline" className="text-sm sm:text-base">Change Photo</Button>
+                  <p className="text-xs sm:text-sm text-gray-500 mt-1">JPG, PNG or GIF. Max size 2MB</p>
                 </div>
               </div>
               
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
                     First Name
                   </label>
                   <input
                     type="text"
-                    className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900"
+                    className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm sm:text-base"
                     defaultValue="John"
                   />
                 </div>
@@ -77,7 +79,7 @@ export const SettingsSection = () => {
                   </label>
                   <input
                     type="text"
-                    className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900"
+                    className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm sm:text-base"
                     defaultValue="Doe"
                   />
                 </div>
@@ -87,7 +89,7 @@ export const SettingsSection = () => {
                   </label>
                   <input
                     type="email"
-                    className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900"
+                    className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm sm:text-base"
                     defaultValue="john.doe@email.com"
                   />
                 </div>
@@ -97,7 +99,7 @@ export const SettingsSection = () => {
                   </label>
                   <input
                     type="tel"
-                    className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900"
+                    className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm sm:text-base"
                     defaultValue="+92 300 1234567"
                   />
                 </div>
@@ -107,13 +109,13 @@ export const SettingsSection = () => {
                   </label>
                   <textarea
                     rows={3}
-                    className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900"
+                    className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm sm:text-base"
                     defaultValue="123 Business Street, Karachi, Pakistan"
                   ></textarea>
                 </div>
               </div>
               
-              <Button className="mt-6 bg-gray-900 hover:bg-gray-800">
+              <Button className="mt-6 bg-gray-900 hover:bg-gray-800 w-full sm:w-auto">
                 <Save className="h-4 w-4 mr-2" />
                 Save Changes
               </Button>
@@ -121,23 +123,23 @@ export const SettingsSection = () => {
           </Card>
         </TabsContent>
 
-        <TabsContent value="store" className="space-y-6">
+        <TabsContent value="store" className="space-y-4 sm:space-y-6">
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center">
+              <CardTitle className="flex items-center text-lg sm:text-xl">
                 <Store className="h-5 w-5 mr-2" />
                 Store Information
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="space-y-6">
+              <div className="space-y-4 sm:space-y-6">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
                     Store Name
                   </label>
                   <input
                     type="text"
-                    className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900"
+                    className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm sm:text-base"
                     defaultValue="John's Electronics Store"
                   />
                 </div>
@@ -148,18 +150,18 @@ export const SettingsSection = () => {
                   </label>
                   <textarea
                     rows={4}
-                    className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900"
+                    className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm sm:text-base"
                     defaultValue="Quality electronics and accessories with fast delivery and excellent customer service."
                   ></textarea>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
                       Store Logo
                     </label>
                     <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center">
-                      <p className="text-gray-500">Click to upload logo</p>
+                      <p className="text-gray-500 text-sm sm:text-base">Click to upload logo</p>
                     </div>
                   </div>
                   <div>
@@ -167,19 +169,19 @@ export const SettingsSection = () => {
                       Store Banner
                     </label>
                     <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center">
-                      <p className="text-gray-500">Click to upload banner</p>
+                      <p className="text-gray-500 text-sm sm:text-base">Click to upload banner</p>
                     </div>
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
                       Business License
                     </label>
                     <input
                       type="text"
-                      className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900"
+                      className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm sm:text-base"
                       placeholder="Enter license number"
                     />
                   </div>
@@ -189,14 +191,14 @@ export const SettingsSection = () => {
                     </label>
                     <input
                       type="text"
-                      className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900"
+                      className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm sm:text-base"
                       placeholder="Enter tax ID"
                     />
                   </div>
                 </div>
               </div>
               
-              <Button className="mt-6 bg-gray-900 hover:bg-gray-800">
+              <Button className="mt-6 bg-gray-900 hover:bg-gray-800 w-full sm:w-auto">
                 <Save className="h-4 w-4 mr-2" />
                 Update Store Info
               </Button>
@@ -204,20 +206,20 @@ export const SettingsSection = () => {
           </Card>
         </TabsContent>
 
-        <TabsContent value="notifications" className="space-y-6">
+        <TabsContent value="notifications" className="space-y-4 sm:space-y-6">
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center">
+              <CardTitle className="flex items-center text-lg sm:text-xl">
                 <Bell className="h-5 w-5 mr-2" />
                 Notification Preferences
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="space-y-6">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <h4 className="font-medium text-gray-900">Order Updates</h4>
-                    <p className="text-sm text-gray-600">Get notified when you receive new orders</p>
+              <div className="space-y-4 sm:space-y-6">
+                <div className="flex items-center justify-between py-2">
+                  <div className="flex-1 pr-4">
+                    <h4 className="font-medium text-gray-900 text-sm sm:text-base">Order Updates</h4>
+                    <p className="text-xs sm:text-sm text-gray-600">Get notified when you receive new orders</p>
                   </div>
                   <Switch
                     checked={notifications.orderUpdates}
@@ -227,10 +229,10 @@ export const SettingsSection = () => {
                   />
                 </div>
 
-                <div className="flex items-center justify-between">
-                  <div>
-                    <h4 className="font-medium text-gray-900">Stock Alerts</h4>
-                    <p className="text-sm text-gray-600">Receive alerts when products are low in stock</p>
+                <div className="flex items-center justify-between py-2">
+                  <div className="flex-1 pr-4">
+                    <h4 className="font-medium text-gray-900 text-sm sm:text-base">Stock Alerts</h4>
+                    <p className="text-xs sm:text-sm text-gray-600">Receive alerts when products are low in stock</p>
                   </div>
                   <Switch
                     checked={notifications.stockAlerts}
@@ -240,10 +242,10 @@ export const SettingsSection = () => {
                   />
                 </div>
 
-                <div className="flex items-center justify-between">
-                  <div>
-                    <h4 className="font-medium text-gray-900">Payment Updates</h4>
-                    <p className="text-sm text-gray-600">Get notified about payment confirmations</p>
+                <div className="flex items-center justify-between py-2">
+                  <div className="flex-1 pr-4">
+                    <h4 className="font-medium text-gray-900 text-sm sm:text-base">Payment Updates</h4>
+                    <p className="text-xs sm:text-sm text-gray-600">Get notified about payment confirmations</p>
                   </div>
                   <Switch
                     checked={notifications.paymentUpdates}
@@ -253,10 +255,10 @@ export const SettingsSection = () => {
                   />
                 </div>
 
-                <div className="flex items-center justify-between">
-                  <div>
-                    <h4 className="font-medium text-gray-900">New Messages</h4>
-                    <p className="text-sm text-gray-600">Receive notifications for new customer messages</p>
+                <div className="flex items-center justify-between py-2">
+                  <div className="flex-1 pr-4">
+                    <h4 className="font-medium text-gray-900 text-sm sm:text-base">New Messages</h4>
+                    <p className="text-xs sm:text-sm text-gray-600">Receive notifications for new customer messages</p>
                   </div>
                   <Switch
                     checked={notifications.newMessages}
@@ -266,10 +268,10 @@ export const SettingsSection = () => {
                   />
                 </div>
 
-                <div className="flex items-center justify-between">
-                  <div>
-                    <h4 className="font-medium text-gray-900">Promotional Offers</h4>
-                    <p className="text-sm text-gray-600">Receive updates about platform promotions</p>
+                <div className="flex items-center justify-between py-2">
+                  <div className="flex-1 pr-4">
+                    <h4 className="font-medium text-gray-900 text-sm sm:text-base">Promotional Offers</h4>
+                    <p className="text-xs sm:text-sm text-gray-600">Receive updates about platform promotions</p>
                   </div>
                   <Switch
                     checked={notifications.promotions}
@@ -279,10 +281,10 @@ export const SettingsSection = () => {
                   />
                 </div>
 
-                <div className="flex items-center justify-between">
-                  <div>
-                    <h4 className="font-medium text-gray-900">Weekly Reports</h4>
-                    <p className="text-sm text-gray-600">Get weekly sales and performance reports</p>
+                <div className="flex items-center justify-between py-2">
+                  <div className="flex-1 pr-4">
+                    <h4 className="font-medium text-gray-900 text-sm sm:text-base">Weekly Reports</h4>
+                    <p className="text-xs sm:text-sm text-gray-600">Get weekly sales and performance reports</p>
                   </div>
                   <Switch
                     checked={notifications.weeklyReport}
@@ -293,7 +295,7 @@ export const SettingsSection = () => {
                 </div>
               </div>
               
-              <Button className="mt-6 bg-gray-900 hover:bg-gray-800">
+              <Button className="mt-6 bg-gray-900 hover:bg-gray-800 w-full sm:w-auto">
                 <Save className="h-4 w-4 mr-2" />
                 Save Preferences
               </Button>
@@ -301,21 +303,21 @@ export const SettingsSection = () => {
           </Card>
         </TabsContent>
 
-        <TabsContent value="payments" className="space-y-6">
+        <TabsContent value="payments" className="space-y-4 sm:space-y-6">
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center">
+              <CardTitle className="flex items-center text-lg sm:text-xl">
                 <CreditCard className="h-5 w-5 mr-2" />
                 Payment Setup
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="space-y-6">
+              <div className="space-y-4 sm:space-y-6">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
                     Preferred Payment Method
                   </label>
-                  <select className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900">
+                  <select className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm sm:text-base">
                     <option>Bank Transfer</option>
                     <option>JazzCash</option>
                     <option>EasyPaisa</option>
@@ -323,14 +325,14 @@ export const SettingsSection = () => {
                   </select>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
                       Account Holder Name
                     </label>
                     <input
                       type="text"
-                      className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900"
+                      className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm sm:text-base"
                       placeholder="Enter account holder name"
                     />
                   </div>
@@ -340,7 +342,7 @@ export const SettingsSection = () => {
                     </label>
                     <input
                       type="text"
-                      className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900"
+                      className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm sm:text-base"
                       placeholder="Enter account number"
                     />
                   </div>
@@ -350,7 +352,7 @@ export const SettingsSection = () => {
                     </label>
                     <input
                       type="text"
-                      className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900"
+                      className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm sm:text-base"
                       placeholder="Enter bank name"
                     />
                   </div>
@@ -360,14 +362,14 @@ export const SettingsSection = () => {
                     </label>
                     <input
                       type="text"
-                      className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900"
+                      className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm sm:text-base"
                       placeholder="Enter branch code"
                     />
                   </div>
                 </div>
               </div>
               
-              <Button className="mt-6 bg-gray-900 hover:bg-gray-800">
+              <Button className="mt-6 bg-gray-900 hover:bg-gray-800 w-full sm:w-auto">
                 <Save className="h-4 w-4 mr-2" />
                 Save Payment Info
               </Button>
@@ -375,22 +377,22 @@ export const SettingsSection = () => {
           </Card>
         </TabsContent>
 
-        <TabsContent value="preferences" className="space-y-6">
+        <TabsContent value="preferences" className="space-y-4 sm:space-y-6">
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center">
+              <CardTitle className="flex items-center text-lg sm:text-xl">
                 <Globe className="h-5 w-5 mr-2" />
                 General Preferences
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="space-y-4 sm:space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
                       Language
                     </label>
-                    <select className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900">
+                    <select className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm sm:text-base">
                       <option>English</option>
                       <option>اردو (Urdu)</option>
                       <option>हिंदी (Hindi)</option>
@@ -400,7 +402,7 @@ export const SettingsSection = () => {
                     <label className="block text-sm font-medium text-gray-700 mb-2">
                       Timezone
                     </label>
-                    <select className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900">
+                    <select className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm sm:text-base">
                       <option>PKT (UTC+5)</option>
                       <option>IST (UTC+5:30)</option>
                       <option>GMT (UTC+0)</option>
@@ -410,7 +412,7 @@ export const SettingsSection = () => {
                     <label className="block text-sm font-medium text-gray-700 mb-2">
                       Currency
                     </label>
-                    <select className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900">
+                    <select className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm sm:text-base">
                       <option>PKR (Pakistani Rupee)</option>
                       <option>USD (US Dollar)</option>
                       <option>INR (Indian Rupee)</option>
@@ -420,7 +422,7 @@ export const SettingsSection = () => {
                     <label className="block text-sm font-medium text-gray-700 mb-2">
                       Theme
                     </label>
-                    <select className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900">
+                    <select className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm sm:text-base">
                       <option>Light</option>
                       <option>Dark</option>
                       <option>Auto</option>
@@ -429,7 +431,7 @@ export const SettingsSection = () => {
                 </div>
               </div>
               
-              <Button className="mt-6 bg-gray-900 hover:bg-gray-800">
+              <Button className="mt-6 bg-gray-900 hover:bg-gray-800 w-full sm:w-auto">
                 <Save className="h-4 w-4 mr-2" />
                 Save Preferences
               </Button>
@@ -437,18 +439,18 @@ export const SettingsSection = () => {
           </Card>
         </TabsContent>
 
-        <TabsContent value="security" className="space-y-6">
+        <TabsContent value="security" className="space-y-4 sm:space-y-6">
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center">
+              <CardTitle className="flex items-center text-lg sm:text-xl">
                 <Shield className="h-5 w-5 mr-2" />
                 Security Settings
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="space-y-6">
+              <div className="space-y-4 sm:space-y-6">
                 <div>
-                  <h4 className="font-medium text-gray-900 mb-4">Change Password</h4>
+                  <h4 className="font-medium text-gray-900 mb-4 text-sm sm:text-base">Change Password</h4>
                   <div className="space-y-4">
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -456,7 +458,7 @@ export const SettingsSection = () => {
                       </label>
                       <input
                         type="password"
-                        className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900"
+                        className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm sm:text-base"
                       />
                     </div>
                     <div>
@@ -465,7 +467,7 @@ export const SettingsSection = () => {
                       </label>
                       <input
                         type="password"
-                        className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900"
+                        className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm sm:text-base"
                       />
                     </div>
                     <div>
@@ -474,24 +476,24 @@ export const SettingsSection = () => {
                       </label>
                       <input
                         type="password"
-                        className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900"
+                        className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm sm:text-base"
                       />
                     </div>
                   </div>
                 </div>
 
                 <div className="border-t pt-6">
-                  <h4 className="font-medium text-gray-900 mb-4">Two-Factor Authentication</h4>
-                  <div className="flex items-center justify-between">
+                  <h4 className="font-medium text-gray-900 mb-4 text-sm sm:text-base">Two-Factor Authentication</h4>
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between space-y-3 sm:space-y-0">
                     <div>
                       <p className="text-sm text-gray-600">Add an extra layer of security to your account</p>
                     </div>
-                    <Button variant="outline">Enable 2FA</Button>
+                    <Button variant="outline" className="w-full sm:w-auto">Enable 2FA</Button>
                   </div>
                 </div>
               </div>
               
-              <Button className="mt-6 bg-gray-900 hover:bg-gray-800">
+              <Button className="mt-6 bg-gray-900 hover:bg-gray-800 w-full sm:w-auto">
                 <Save className="h-4 w-4 mr-2" />
                 Update Security
               </Button>

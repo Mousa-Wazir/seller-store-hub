@@ -50,64 +50,67 @@ export const SupportSection = () => {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-6 p-3 sm:p-4 lg:p-6">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center space-y-4 sm:space-y-0">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center space-y-3 sm:space-y-0">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Support & Help</h1>
-          <p className="text-gray-600">Get help and support for your seller account</p>
+          <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900">Support & Help</h1>
+          <p className="text-gray-600 text-sm sm:text-base">Get help and support for your seller account</p>
         </div>
-        <Button className="bg-gray-900 hover:bg-gray-800">
+        <Button className="bg-gray-900 hover:bg-gray-800 w-full sm:w-auto text-sm sm:text-base">
           <MessageSquare className="h-4 w-4 mr-2" />
           New Support Ticket
         </Button>
       </div>
 
       {/* Contact Options */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
         <Card>
-          <CardContent className="p-6 text-center">
-            <Phone className="h-8 w-8 text-blue-600 mx-auto mb-3" />
-            <h3 className="font-medium text-gray-900 mb-2">Phone Support</h3>
+          <CardContent className="p-4 sm:p-6 text-center">
+            <Phone className="h-6 w-6 sm:h-8 sm:w-8 text-blue-600 mx-auto mb-3" />
+            <h3 className="font-medium text-gray-900 mb-2 text-sm sm:text-base">Phone Support</h3>
             <p className="text-sm text-gray-600 mb-3">+92-21-111-SELLER</p>
             <p className="text-xs text-gray-500">Mon-Fri, 9AM-6PM</p>
           </CardContent>
         </Card>
 
         <Card>
-          <CardContent className="p-6 text-center">
-            <Mail className="h-8 w-8 text-green-600 mx-auto mb-3" />
-            <h3 className="font-medium text-gray-900 mb-2">Email Support</h3>
+          <CardContent className="p-4 sm:p-6 text-center">
+            <Mail className="h-6 w-6 sm:h-8 sm:w-8 text-green-600 mx-auto mb-3" />
+            <h3 className="font-medium text-gray-900 mb-2 text-sm sm:text-base">Email Support</h3>
             <p className="text-sm text-gray-600 mb-3">seller@support.com</p>
             <p className="text-xs text-gray-500">Response within 24 hours</p>
           </CardContent>
         </Card>
 
-        <Card>
-          <CardContent className="p-6 text-center">
-            <MessageSquare className="h-8 w-8 text-purple-600 mx-auto mb-3" />
-            <h3 className="font-medium text-gray-900 mb-2">Live Chat</h3>
+        <Card className="sm:col-span-2 lg:col-span-1">
+          <CardContent className="p-4 sm:p-6 text-center">
+            <MessageSquare className="h-6 w-6 sm:h-8 sm:w-8 text-purple-600 mx-auto mb-3" />
+            <h3 className="font-medium text-gray-900 mb-2 text-sm sm:text-base">Live Chat</h3>
             <p className="text-sm text-gray-600 mb-3">Chat with our team</p>
-            <Button size="sm" variant="outline">Start Chat</Button>
+            <Button size="sm" variant="outline" className="text-xs sm:text-sm">Start Chat</Button>
           </CardContent>
         </Card>
       </div>
 
       {/* Support Tabs */}
-      <Tabs defaultValue="tickets" className="space-y-6">
-        <TabsList className="grid w-full grid-cols-3">
-          <TabsTrigger value="tickets">Support Tickets</TabsTrigger>
-          <TabsTrigger value="faqs">FAQs</TabsTrigger>
-          <TabsTrigger value="contact">Contact Form</TabsTrigger>
-        </TabsList>
+      <Tabs defaultValue="tickets" className="space-y-4 sm:space-y-6">
+        <div className="w-full overflow-x-auto">
+          <TabsList className="grid w-full grid-cols-3 min-w-[300px] sm:min-w-0">
+            <TabsTrigger value="tickets" className="text-xs sm:text-sm px-2 sm:px-4">Support Tickets</TabsTrigger>
+            <TabsTrigger value="faqs" className="text-xs sm:text-sm px-2 sm:px-4">FAQs</TabsTrigger>
+            <TabsTrigger value="contact" className="text-xs sm:text-sm px-2 sm:px-4">Contact Form</TabsTrigger>
+          </TabsList>
+        </div>
 
-        <TabsContent value="tickets" className="space-y-6">
+        <TabsContent value="tickets" className="space-y-4 sm:space-y-6">
           <Card>
             <CardHeader>
-              <CardTitle>Your Support Tickets</CardTitle>
+              <CardTitle className="text-lg sm:text-xl">Your Support Tickets</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="overflow-x-auto">
+              {/* Desktop Table */}
+              <div className="hidden lg:block overflow-x-auto">
                 <table className="w-full">
                   <thead>
                     <tr className="border-b border-gray-200">
@@ -143,24 +146,50 @@ export const SupportSection = () => {
                   </tbody>
                 </table>
               </div>
+
+              {/* Mobile/Tablet Cards */}
+              <div className="lg:hidden space-y-4">
+                {tickets.map((ticket) => (
+                  <Card key={ticket.id} className="p-4 border border-gray-200">
+                    <div className="space-y-3">
+                      <div className="flex justify-between items-start">
+                        <div>
+                          <h3 className="font-medium text-gray-900 text-sm sm:text-base">{ticket.id}</h3>
+                          <p className="text-xs sm:text-sm text-gray-600">{ticket.subject}</p>
+                        </div>
+                        <Badge variant={getStatusColor(ticket.status)} className="text-xs">
+                          {ticket.status}
+                        </Badge>
+                      </div>
+                      <div className="flex justify-between items-center text-sm">
+                        <span className={`font-medium capitalize ${getPriorityColor(ticket.priority)}`}>
+                          {ticket.priority} priority
+                        </span>
+                        <span className="text-gray-600">{ticket.created}</span>
+                      </div>
+                      <Button size="sm" variant="outline" className="w-full text-xs sm:text-sm">View Ticket</Button>
+                    </div>
+                  </Card>
+                ))}
+              </div>
             </CardContent>
           </Card>
         </TabsContent>
 
-        <TabsContent value="faqs" className="space-y-6">
+        <TabsContent value="faqs" className="space-y-4 sm:space-y-6">
           <Card>
             <CardHeader>
-              <CardTitle>Frequently Asked Questions</CardTitle>
+              <CardTitle className="text-lg sm:text-xl">Frequently Asked Questions</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="space-y-6">
+              <div className="space-y-4 sm:space-y-6">
                 {faqs.map((faq, index) => (
-                  <div key={index} className="border-b border-gray-200 pb-6 last:border-b-0">
-                    <h3 className="font-medium text-gray-900 mb-2 flex items-center">
-                      <HelpCircle className="h-4 w-4 mr-2 text-blue-600" />
+                  <div key={index} className="border-b border-gray-200 pb-4 sm:pb-6 last:border-b-0">
+                    <h3 className="font-medium text-gray-900 mb-2 flex items-center text-sm sm:text-base">
+                      <HelpCircle className="h-4 w-4 mr-2 text-blue-600 flex-shrink-0" />
                       {faq.question}
                     </h3>
-                    <p className="text-gray-600 leading-relaxed">{faq.answer}</p>
+                    <p className="text-gray-600 leading-relaxed text-sm sm:text-base ml-6">{faq.answer}</p>
                   </div>
                 ))}
               </div>
@@ -168,10 +197,10 @@ export const SupportSection = () => {
           </Card>
         </TabsContent>
 
-        <TabsContent value="contact" className="space-y-6">
+        <TabsContent value="contact" className="space-y-4 sm:space-y-6">
           <Card>
             <CardHeader>
-              <CardTitle>Contact Support</CardTitle>
+              <CardTitle className="text-lg sm:text-xl">Contact Support</CardTitle>
             </CardHeader>
             <CardContent>
               <form className="space-y-4">
@@ -182,7 +211,7 @@ export const SupportSection = () => {
                     </label>
                     <input
                       type="text"
-                      className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900"
+                      className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm sm:text-base"
                       placeholder="Enter your name"
                     />
                   </div>
@@ -192,7 +221,7 @@ export const SupportSection = () => {
                     </label>
                     <input
                       type="email"
-                      className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900"
+                      className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm sm:text-base"
                       placeholder="Enter your email"
                     />
                   </div>
@@ -203,7 +232,7 @@ export const SupportSection = () => {
                   </label>
                   <input
                     type="text"
-                    className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900"
+                    className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm sm:text-base"
                     placeholder="Enter subject"
                   />
                 </div>
@@ -211,7 +240,7 @@ export const SupportSection = () => {
                   <label className="block text-sm font-medium text-gray-700 mb-2">
                     Priority
                   </label>
-                  <select className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900">
+                  <select className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm sm:text-base">
                     <option>Low</option>
                     <option>Medium</option>
                     <option>High</option>
@@ -224,11 +253,11 @@ export const SupportSection = () => {
                   </label>
                   <textarea
                     rows={6}
-                    className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900"
+                    className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm sm:text-base"
                     placeholder="Describe your issue or question..."
                   ></textarea>
                 </div>
-                <Button type="submit" className="bg-gray-900 hover:bg-gray-800">
+                <Button type="submit" className="bg-gray-900 hover:bg-gray-800 w-full sm:w-auto">
                   <Send className="h-4 w-4 mr-2" />
                   Submit Ticket
                 </Button>

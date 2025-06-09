@@ -1,5 +1,5 @@
 
-import { Bell, Menu, User, LogOut, Search, X } from "lucide-react";
+import { Bell, Menu, User, LogOut, Search, X, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
@@ -48,7 +48,12 @@ export const Header = ({
             )}
           </Button>
           
-          <div className="font-bold text-lg sm:text-xl text-gray-900">SellerHub</div>
+          <div className="flex items-center space-x-1 sm:space-x-2">
+            <div className="flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 bg-gray-900 rounded-lg">
+              <MapPin className="h-4 w-4 sm:h-5 sm:w-5 text-white" />
+            </div>
+            <div className="font-bold text-lg sm:text-xl text-gray-900">LocalEna</div>
+          </div>
         </div>
 
         {/* Center - Page Title (Hidden on mobile) */}
