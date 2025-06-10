@@ -1,11 +1,14 @@
+
 import { useState } from "react";
 import { CalendarDays, Package, Clock, DollarSign, FileText, Bell, Plus, Search, Filter, BarChart3 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+
 export const RentalManagement = () => {
   const [activeRentalTab, setActiveRentalTab] = useState("products");
+  
   const rentalProducts = [{
     id: 1,
     name: "Professional Camera",
@@ -28,6 +31,7 @@ export const RentalManagement = () => {
     available: true,
     category: "Tools"
   }];
+  
   const rentalBookings = [{
     id: "R001",
     product: "Professional Camera",
@@ -53,7 +57,9 @@ export const RentalManagement = () => {
     status: "pending",
     deposit: 100
   }];
-  return <div className="<div class=\"grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-4\">\n  <div class=\"bg-white p-3 sm:p-4 md:p-6 rounded-xl shadow text-center\">\n    <p class=\"text-xs sm:text-sm text-gray-600\">Total Products</p>\n    <h2 class=\"text-lg sm:text-xl md:text-2xl font-semibold text-gray-800\">12</h2>\n  </div>\n</div>\n">
+
+  return (
+    <div className="space-y-6 p-4 sm:p-6">
       {/* Header Section - Fully Responsive */}
       <div className="flex flex-col space-y-4 mb-6">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
@@ -169,7 +175,8 @@ export const RentalManagement = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {rentalProducts.map(product => <tr key={product.id} className="border-b border-gray-100 hover:bg-gray-50">
+                    {rentalProducts.map(product => (
+                      <tr key={product.id} className="border-b border-gray-100 hover:bg-gray-50">
                         <td className="py-4 px-4 font-medium text-gray-900">{product.name}</td>
                         <td className="py-4 px-4 text-gray-600">{product.category}</td>
                         <td className="py-4 px-4 font-medium text-gray-900">${product.dailyRate}/day</td>
@@ -182,14 +189,16 @@ export const RentalManagement = () => {
                         <td className="py-4 px-4">
                           <Button size="sm" variant="outline">Edit</Button>
                         </td>
-                      </tr>)}
+                      </tr>
+                    ))}
                   </tbody>
                 </table>
               </div>
 
               {/* Mobile/Tablet Cards */}
               <div className="lg:hidden space-y-4">
-                {rentalProducts.map(product => <Card key={product.id} className="p-4 border border-gray-200">
+                {rentalProducts.map(product => (
+                  <Card key={product.id} className="p-4 border border-gray-200">
                     <div className="space-y-3">
                       <div className="flex justify-between items-start">
                         <div className="flex-1">
@@ -212,7 +221,8 @@ export const RentalManagement = () => {
                       </div>
                       <Button size="sm" variant="outline" className="w-full">Edit Product</Button>
                     </div>
-                  </Card>)}
+                  </Card>
+                ))}
               </div>
             </CardContent>
           </Card>
@@ -226,14 +236,18 @@ export const RentalManagement = () => {
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
-                {rentalBookings.map(booking => <Card key={booking.id} className="p-4 border border-gray-200">
+                {rentalBookings.map(booking => (
+                  <Card key={booking.id} className="p-4 border border-gray-200">
                     <div className="space-y-3">
                       <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2">
                         <div className="flex-1">
                           <h3 className="font-medium text-gray-900 text-sm sm:text-base">{booking.id}</h3>
                           <p className="text-xs sm:text-sm text-gray-600">{booking.product}</p>
                         </div>
-                        <Badge variant={booking.status === "active" ? "default" : booking.status === "completed" ? "secondary" : "outline"} className="text-xs self-start">
+                        <Badge 
+                          variant={booking.status === "active" ? "default" : booking.status === "completed" ? "secondary" : "outline"} 
+                          className="text-xs self-start"
+                        >
                           {booking.status}
                         </Badge>
                       </div>
@@ -243,14 +257,19 @@ export const RentalManagement = () => {
                         <p><span className="text-gray-600">Deposit:</span> <span className="font-medium">${booking.deposit}</span></p>
                       </div>
                       <div className="flex flex-col sm:flex-row gap-2">
-                        {booking.status === "pending" && <>
+                        {booking.status === "pending" && (
+                          <>
                             <Button size="sm" variant="outline" className="w-full sm:flex-1 text-xs">Approve</Button>
                             <Button size="sm" variant="outline" className="w-full sm:flex-1 text-xs">Reject</Button>
-                          </>}
-                        {booking.status === "active" && <Button size="sm" variant="outline" className="w-full text-xs">Mark Returned</Button>}
+                          </>
+                        )}
+                        {booking.status === "active" && (
+                          <Button size="sm" variant="outline" className="w-full text-xs">Mark Returned</Button>
+                        )}
                       </div>
                     </div>
-                  </Card>)}
+                  </Card>
+                ))}
               </div>
             </CardContent>
           </Card>
@@ -360,5 +379,6 @@ export const RentalManagement = () => {
           </Card>
         </TabsContent>
       </Tabs>
-    </div>;
+    </div>
+  );
 };
